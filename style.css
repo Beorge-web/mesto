@@ -49,7 +49,7 @@
   width: 24px;
   align-self: end;
   padding-bottom: 8px;
-  background-image: url(/images/editbutton.svg);
+  background-image: url(images/editbutton.svg);
   border: none;
   outline: none;
   background-color: transparent;
@@ -144,7 +144,7 @@
   margin-left: 10px;
   height: 19px;
   width: 22px;
-  background-image: url(/images/like.svg);
+  background-image: url(images/like.svg);
   border: none;
   outline: none;
   background-color: transparent;
@@ -157,7 +157,7 @@
   margin-left: 10px;
   height: 19px;
   width: 22px;
-  background-image: url(/images/activeLike.svg);
+  background-image: url(images/activeLike.svg);
   background-size: cover;
   border: none;
   outline: none;
@@ -206,7 +206,7 @@
 }
 .popup__close-icon {
   transform: rotate(-45deg);
-  background-image: url(/images/plus.svg);
+  background-image: url(images/plus.svg);
   background-size: contain;
   position: absolute;
   top: -40px;

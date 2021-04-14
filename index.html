@@ -8,11 +8,10 @@
       content="width=device-width, initial-scale=1.0"
     />
     <title>Место</title>
-    <link rel="stylesheet" href="/vendor/normalize.css" />
-    <link rel="stylesheet" href="/vendor/fonts/font.css" />
-    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
-    <link rel="stylesheet" href="/style.css" />
-    <script src="/script.js"></script>
+
+    <link rel="stylesheet" href="./pages/index.css" /> 
+
+    
   </head>
 </head>
 <body class="root">
@@ -24,70 +23,68 @@
       <main class="content">
           <section class="profile root_section">
             <img src="/images/Avatar.png" alt="" class="profile__avatar">
-            <div class="profile__info">
-                
+            <div class="profile__info">    
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <img src="/images/editbutton.svg" alt="" class="profile__button">
-                    <p class="profile__subittle">Исследователь океана</p>   
+                    <button type="submit"  class="profile__button"></button>
+                    <p class="profile__subtitle">Исследователь океана</p>   
             </div>
             <div class="profile__add-button">
                 <img src="/images/plus.svg" alt="" class="profile__vector">
             </div>
             
           </section>
-          <div class="popup">
+          <div class="popup disabled">
             <div class="popup__container">
-                <img src="/images/plus.svg" alt="" class="popup__close-icon">
+                <button class="popup__close-icon"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input type="text" placeholder="  " class="input__text input__text_type_name">
-                <input type="text" placeholder=" " class="input__text input__text_type_activity">
-                <p class="popup__submit-button">Сохранить</p>
-
+                <input type="text" placeholder="Имя" value="Жак-Ив Кусто" class="popup__text popup__text_type_name">
+                <input type="text" placeholder="Занятие" value="Исследователь океана"class="popup__text popup__text_type_activity">
+                <button type="submit" class="popup__submit-button">Сохранить</button>
             </div>
             <div class="popup__opacity"></div>
          </div>
 
           <section class="elements root_section">
               <div class="element">
-                  <img src="/images/kirill-pershin-1088404-unsplash.jpg" alt="" class="element__image">
+                  <img src="/images/02_shachta_mir.jpg" alt="" class="element__image">
                 <div class="element__bottom">
-                    <h3 class="element__title">Карачаевск aagdsg</h3>
-                    <img src="/images/like.svg" alt="" class="element__like">
+                    <h3 class="element__title">Якутия</h3>
+                    <button  class="element__like "></button>
                 </div>
               </div>
               <div class="element">
-                <img src="/images/kirill-pershin-1088404-unsplash.jpg" alt="" class="element__image">
+                <img src="/images/03_ordinskaya_pesher.jpg" alt="" class="element__image">
               <div class="element__bottom">
-                  <h3 class="element__title">Карачаевск</h3>
-                  <img src="/images/like.svg" alt="" class="element__like">
+                  <h3 class="element__title">Пермский край</h3>
+                  <button  class="element__like "></button>
               </div>
             </div>
             <div class="element">
-                <img src="/images/kirill-pershin-1088404-unsplash.jpg" alt="" class="element__image">
+                <img src="/images/04_Solovki.jpg" alt="" class="element__image">
               <div class="element__bottom">
-                  <h3 class="element__title">Карачаевск</h3>
-                  <img src="/images/like.svg" alt="" class="element__like">
+                  <h3 class="element__title">Архангельская область</h3>
+                  <button  class="element__like "></button>
               </div>
             </div>
             <div class="element">
-                <img src="/images/kirill-pershin-1088404-unsplash.jpg" alt="" class="element__image">
+                <img src="/images/05_charskie_peski.jpg" alt="" class="element__image">
               <div class="element__bottom">
-                  <h3 class="element__title">Карачаевск</h3>
-                  <img src="/images/like.svg" alt="" class="element__like">
+                  <h3 class="element__title">Забайкалье</h3>
+                  <button  class="element__like "></button>
               </div>
             </div>
             <div class="element">
-                <img src="/images/kirill-pershin-1088404-unsplash.jpg" alt="" class="element__image">
+                <img src="/images/06_Big-Bogdo.jpg" alt="" class="element__image">
               <div class="element__bottom">
-                  <h3 class="element__title">Карачаевск</h3>
-                  <img src="/images/like.svg" alt="" class="element__like">
+                  <h3 class="element__title">Астраханская область</h3>
+                  <button  class="element__like "></button>
               </div>
             </div>
             <div class="element">
-                <img src="/images/kirill-pershin-1088404-unsplash.jpg" alt="" class="element__image">
+                <img src="/images/07_vulkan_krenizyna.jpg" alt="" class="element__image">
               <div class="element__bottom">
-                  <h3 class="element__title">Карачаевск</h3>
-                  <img src="/images/like.svg" alt="" class="element__like">
+                  <h3 class="element__title">Курильские острова</h3>
+                  <button  class="element__like "></button>
               </div>
             </div>
           </section>
@@ -97,5 +94,6 @@
           <img src="/images/footer__logo.svg" alt="" class="footer__logo">
       </footer>
     </div>
+    <script src="/script.js"></script>
   </body>
 </html>

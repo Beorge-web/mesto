@@ -1,7 +1,11 @@
 .root__section {
   width: 880px;
 }
-
+@media screen and (max-width: 1000px) {
+  .root__section {
+    width: 95%;
+  }
+}
 @media screen and (max-width: 720px) {
   .root__section {
     width: 282px;

@@ -4,31 +4,33 @@ let saveButton = document.querySelector('.popup__submit-button');
 let editButton = document.querySelector('.profile__button');
 let popup = document.querySelector('.popup');
 let closeButton = document.querySelector('.popup__close-icon');
-let inputName = document.querySelector('.popup__text_type_name');
 let likeButton = document.querySelector('.element__like');
 let inoutActivity = document.querySelector('.popup__text popup__text_type_activity');
-
-function like() {
-  likeButton.classList.toggle('element__like_active');
-}
-
+let nameInput = document.querySelector('.popup__text_type_name');
+let activityInput = document.querySelector('.popup__text_type_activity');
+let form = document.querySelector('.form');
+console.log(form)
 function showPopup() {
-  popup.classList.remove('disabled');
+  popup.classList.toggle('popup_opened');
+  nameInput.value=profileName.textContent;
+  activityInput.value=profileActivity.textContent; 
+
 }
 function closePopup() {
-  popup.classList.add('disabled');
+  popup.classList.toggle('popup_opened');
 }
 
 function changeProfile(evt) {
   evt.preventDefault();
-  let name = document.querySelector('.popup__text_type_name');
-  let activity = document.querySelector('.popup__text_type_activity');
-  profileName.textContent = `${name.value}`;
-  profileActivity.textContent = `${activity.value}`;
-  closePopup();
-}
+  profileName.textContent = `${nameInput.value}`;
+  profileActivity.textContent = `${activityInput.value}`;
 
-saveButton.addEventListener('click', changeProfile);
+  closePopup();
+  
+}
+form.addEventListener('submit', changeProfile); 
 editButton.addEventListener('click', showPopup);
 closeButton.addEventListener('click', closePopup);
-likeButton.addEventListener('click', like);
+
+
+

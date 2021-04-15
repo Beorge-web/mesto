@@ -13,13 +13,13 @@
   opacity: 0.6;
   cursor: pointer;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1000px) {
   .profile__button {
     height: 18px;
     width: 18px;
-    justify-self: end;
-    padding-bottom: 8px;
-    position: absolute;
+    justify-self: center;
+
+    margin-bottom: 4px;
     right: 20px;
     top: 3px;
     padding: 0;

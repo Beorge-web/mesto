@@ -6,12 +6,16 @@
   margin-top: 0;
   margin-bottom: 0;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1000px) {
   .profile__subtitle {
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
   }
 }

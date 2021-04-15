@@ -1,7 +1,6 @@
 .popup__text {
   font-family: "Inter", Arial, sans-serif;
   border: none;
-  height: 27px;
   margin-bottom: 30px;
   font-style: normal;
   font-weight: normal;
@@ -12,7 +11,7 @@
   margin-left: 36px;
   margin-right: 36px;
   background-color: none;
-
+  padding-bottom: 13px;
   border-bottom: 1px solid rgba(000, 0, 0, 0.2);
 }
 .popup__text:last-of-type {
@@ -24,7 +23,7 @@
 @media screen and (max-width: 720px) {
   .popup__text {
     width: 238px;
-    height: 27px;
+
     margin-left: 22px;
     margin-right: 22px;
   }

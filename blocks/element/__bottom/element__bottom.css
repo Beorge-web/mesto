@@ -2,8 +2,9 @@
   display: flex;
   background-color: #fff;
   justify-content: space-between;
-  height: 79px;
   border-radius: 0 0 10px 10px;
   align-items: center;
   width: 282px;
+  margin-top: 25px;
+  margin-bottom: 31px;
 }

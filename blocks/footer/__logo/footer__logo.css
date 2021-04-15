@@ -1,14 +1,15 @@
 .footer__logo {
-  height: 18px;
-  margin: 0;
-}
-@media screen and (max-width: 1000px) {
-  .footer__logo {
-    margin-left: 5%;
-  }
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #545454;
+  line-height: 22px;
 }
 @media screen and (max-width: 720px) {
   .footer__logo {
-    margin: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

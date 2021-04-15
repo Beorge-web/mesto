@@ -8,8 +8,6 @@ let inputName = document.querySelector(".popup__text_type_name");
 let likeButton = document.querySelector(".element__like");
 let inoutActivity = document.querySelector(".popup__text popup__text_type_activity");
 
-
-
 function like() {
   likeButton.classList.toggle("element__like_active");
 }

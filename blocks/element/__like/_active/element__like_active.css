@@ -1,0 +1,12 @@
+.element__like_active {
+  margin-right: 30px;
+  margin-left: 10px;
+  height: 19px;
+  width: 22px;
+  background-image: url(../../../../images/activeLike.svg);
+  background-size: contain;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+/* Работает только на первом элементе, не получается сделать на все */

@@ -8,7 +8,7 @@ let likeButton = document.querySelector('.element__like');
 let inoutActivity = document.querySelector('.popup__text popup__text_type_activity');
 let nameInput = document.querySelector('.popup__text_type_name');
 let activityInput = document.querySelector('.popup__text_type_activity');
-let form = document.querySelector('.form');
+let form = document.querySelector('.popup__form');
 console.log(form)
 function showPopup() {
   popup.classList.toggle('popup_opened');

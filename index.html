@@ -49,80 +49,31 @@
           </div>
           <div class="popup__opacity"></div>
         </div>
-
-        <section class="elements root__section">
-          <div class="element">
-            <img
-              src="images/02_shachta_mir.jpg"
-              alt="Якутия"
-              class="element__image"
-            />
-            <div class="element__bottom">
-              <h3 class="element__title">Якутия</h3>
-              <button type="button" class="element__like"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="images/03_ordinskaya_pesher.jpg"
-              alt="Пермский край"
-              class="element__image"
-            />
-            <div class="element__bottom">
-              <h3 class="element__title">Пермский край</h3>
-              <button type="button" class="element__like"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="images/04_Solovki.jpg"
-              alt="Архангельская область"
-              class="element__image"
-            />
-            <div class="element__bottom">
-              <h3 class="element__title">Архангельская область</h3>
-              <button type="button" class="element__like"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="images/05_charskie_peski.jpg"
-              alt="Забайкалье"
-              class="element__image"
-            />
-            <div class="element__bottom">
-              <h3 class="element__title">Забайкалье</h3>
-              <button type="button" class="element__like"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="images/06_Big-Bogdo.jpg"
-              alt="Астраханская область"
-              class="element__image"
-            />
-            <div class="element__bottom">
-              <h3 class="element__title">Астраханская область</h3>
-              <button type="button" class="element__like"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="images/07_vulkan_krenizyna.jpg"
-              alt="Курильские острова"
-              class="element__image"
-            />
-            <div class="element__bottom">
-              <h3 class="element__title">Курильские острова</h3>
-              <button type="button" class="element__like"></button>
-            </div>
-          </div>
-        </section>
+        <section class="elements root__section"></section>
       </main>
       <footer class="footer root__section">
         <p class="footer__logo">© 2021 Mesto Russia</p>
       </footer>
     </div>
+    <template id="element">
+      <div class="element">
+        <button type="button" class="element__image"></button>
+        <div class="element__bottom">
+          <h3 class="element__title"></h3>
+          <button type="button" class="element__like"></button>
+        </div>
+      </div>
+    </template>
+    <template id="card__photo-popup">
+      <div class="card__photo-popup">
+        <div class="card__popup">
+          <img class="card__photo" />
+          <p class="card__description"></p>
+          <button type="button" class="image__close-icon"></button>
+        </div>
+      </div>
+    </template>
+
     <script src="js/script.js"></script>
   </body>
 </html>

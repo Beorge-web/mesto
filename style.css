@@ -6,6 +6,7 @@
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
+  z-index: 2;
 }
 .card__photo-popup:target {
   visibility: visible;
@@ -20,10 +21,11 @@
   width: fit-content;
 }
 .card__photo {
-  background-size: cover;
+  background-size: contain;
   height: 540px;
-  width: 100%;
-  background-image: url(https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg);
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: cover;
 }
 .card__description {
   font-style: normal;
@@ -45,4 +47,24 @@
   border: none;
   outline: none;
   background-color: rgba(0, 0, 0, 0.01);
+}
+.element__delete {
+  position: absolute;
+  background-image: url(/images/Trash.svg);
+  top: 18px;
+  right: 15px;
+  width: 18px;
+  height: 19px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  background-size: auto;
+  cursor: pointer;
+}
+@media screen and (max-width: 450px) {
+  .card__photo {
+    background-size: contain;
+    height: 540px;
+    max-width: 240px;
+  }
 }

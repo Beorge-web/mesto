@@ -1,0 +1,14 @@
+.element__photo {
+  background-size: contain;
+  height: 540px;
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: cover;
+}
+@media screen and (max-width: 450px) {
+  .element__photo {
+    background-size: contain;
+    height: 540px;
+    max-width: 240px;
+  }
+}

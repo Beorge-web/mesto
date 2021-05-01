@@ -1,5 +1,5 @@
 let tempCard = document.querySelector("#element").content;
-let tempPopup = document.querySelector("#card__photo-popup").content;
+let tempPopup = document.querySelector("#element__photo-popup").content;
 let cardsContainer = document.querySelector(".elements");
 let addButton = document.querySelector(".profile__add-button");
 let newCard = document.querySelector(".popup-add");
@@ -33,9 +33,9 @@ const initialCards = [
 ];
 initialCards.forEach(function (element) {
   let cardElement = tempCard.querySelector(".element").cloneNode(true);
-  let openedPopup = tempPopup.querySelector(".card__photo-popup").cloneNode(true);
-  openedPopup.querySelector(".card__photo").src = element.link;
-  openedPopup.querySelector(".card__description").textContent = element.name;
+  let openedPopup = tempPopup.querySelector(".element__photo-popup").cloneNode(true);
+  openedPopup.querySelector(".element__photo").src = element.link;
+  openedPopup.querySelector(".element__description").textContent = element.name;
   cardElement.querySelector(".element__title").textContent = element.name;
   cardElement.querySelector(".element__image").style.backgroundImage = "url(" + element.link + ")";
   cardsContainer.append(cardElement);
@@ -54,21 +54,21 @@ let nameInput = document.querySelector(".popup__text_type_name");
 let activityInput = document.querySelector(".popup__text_type_activity");
 let form = document.querySelector(".popup__form");
 let addForm = document.querySelector(".popup-add__form");
-let cardPopup = document.querySelectorAll(".card__photo-popup");
+let cardPopup = document.querySelectorAll(".element__photo-popup");
 let imgButton = document.querySelectorAll(".element__image");
 let like = document.querySelectorAll(".element__like");
-let imgClose = document.querySelectorAll(".image__close-icon");
+let imgClose = document.querySelectorAll(".element__close-icon");
 let deleteButton = document.querySelectorAll(".element__delete");
 let cards = document.querySelectorAll(".element");
 
 function addNewCard(evt) {
   evt.preventDefault();
   let cardElement = tempCard.querySelector(".element").cloneNode(true);
-  let openedPopup = tempPopup.querySelector(".card__photo-popup").cloneNode(true);
+  let openedPopup = tempPopup.querySelector(".element__photo-popup").cloneNode(true);
   let place = document.querySelector(".popup-add__text_type_place");
   let imgLink = document.querySelector(".popup-add__text_type_link");
-  let cardPhoto = openedPopup.querySelector(".card__photo");
-  let cardDesc = openedPopup.querySelector(".card__description");
+  let cardPhoto = openedPopup.querySelector(".element__photo");
+  let cardDesc = openedPopup.querySelector(".element__description");
   let elTitle = cardElement.querySelector(".element__title");
   let elImg = cardElement.querySelector(".element__image");
   cardPhoto.src = imgLink.value;
@@ -78,7 +78,7 @@ function addNewCard(evt) {
   elImg.addEventListener("click", function () {
     openedPopup.classList.toggle("popup_opened");
   });
-  openedPopup.querySelector(".image__close-icon").addEventListener("click", function () {
+  openedPopup.querySelector(".element__close-icon").addEventListener("click", function () {
     openedPopup.classList.toggle("popup_opened");
   });
   cardElement.querySelector(".element__delete").addEventListener("click", function () {
@@ -87,8 +87,10 @@ function addNewCard(evt) {
   cardElement.querySelector(".element__like").addEventListener("click",function(){
     cardElement.querySelector(".element__like").classList.toggle("element__like_active");
   })
-  cardsContainer.append(cardElement);
+  cardsContainer.prepend(cardElement);
   cardsContainer.append(openedPopup);
+  place.value= '';
+  imgLink.value= '';
   toggleNewCard();
 }
 
@@ -132,12 +134,12 @@ function closePopup() {
   popup.classList.toggle("popup_opened");
 }
 function toggleNewCard() {
+
   newCard.classList.toggle("popup-add_opened");
 }
 
 newCardClose.addEventListener("click", toggleNewCard);
 addButton.addEventListener("click", toggleNewCard);
-
 editButton.addEventListener("click", showPopup);
-
 form.addEventListener("submit", changeProfile);
+closeButton.addEventListener("click", closePopup);

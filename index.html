@@ -32,18 +32,8 @@
             <button type="button" class="popup__close-icon"></button>
             <form class="popup__form" name="edit-profile">
               <h3 class="popup__title">Редактировать профиль</h3>
-              <input
-                type="text"
-                placeholder="Имя"
-                name="name"
-                class="popup__text popup__text_type_name"
-              />
-              <input
-                type="text"
-                placeholder="Занятие"
-                name="activity"
-                class="popup__text popup__text_type_activity"
-              />
+              <input type="text" placeholder="Имя" name="name" class="popup__text popup__text_type_name" />
+              <input type="text" placeholder="Занятие" name="activity" class="popup__text popup__text_type_activity" />
               <button type="submit" class="popup__submit-button">Сохранить</button>
             </form>
           </div>
@@ -52,7 +42,7 @@
         <div class="popup-add">
           <div class="popup-add__container">
             <button type="button" class="popup-add__close-icon"></button>
-            <form class="popup-add__form" name="add-card">
+            <form class="popup-add__form" name="add-element">
               <h3 class="popup-add__title">Новое место</h3>
               <input
                 type="text"
@@ -87,12 +77,12 @@
         </div>
       </div>
     </template>
-    <template id="card__photo-popup">
-      <div class="card__photo-popup">
-        <div class="card__popup">
-          <img class="card__photo" />
-          <p class="card__description"></p>
-          <button type="button" class="image__close-icon"></button>
+    <template id="element__photo-popup">
+      <div class="element__photo-popup">
+        <div class="element__popup">
+          <img class="element__photo" />
+          <p class="element__description"></p>
+          <button type="button" class="element__close-icon"></button>
         </div>
       </div>
     </template>

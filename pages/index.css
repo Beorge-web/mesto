@@ -1,6 +1,5 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/font.css);
-
 @import url(../blocks/root/root.css);
 @import url(../blocks/root/__section/root__section.css);
 @import url(../blocks/page/page.css);
@@ -25,7 +24,6 @@
 @import url(../blocks/popup/__opacity/popup__opacity.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
-@import url(../blocks/popup/_opened/popup_opened.css);
 
 @import url(../blocks/popup-add/popup-add.css);
 @import url(../blocks/popup-add/__title/popup-add__title.css);
@@ -38,6 +36,7 @@
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
+@import url(../blocks/element/__close-icon/element__close-icon.css);
 @import url(../blocks/element/__description/element_decription.css);
 @import url(../blocks/element/__photo/element__photo.css);
 @import url(../blocks/element/__photo-popup/element__photo-popup.css);
@@ -50,3 +49,4 @@
 @import url(../blocks/element/__bottom/element__bottom.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__logo/footer__logo.css);
+@import url(../blocks/popup/_opened/popup_opened.css);

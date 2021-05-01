@@ -134,7 +134,7 @@ function closePopup() {
   popup.classList.toggle("popup_opened");
 }
 function toggleNewCard() {
-  newCard.classList.toggle("popup-add_opened");
+  newCard.classList.toggle("popup_opened");
 }
 
 newCardClose.addEventListener("click", toggleNewCard);

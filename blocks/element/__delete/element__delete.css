@@ -1,6 +1,6 @@
 .element__delete {
   position: absolute;
-  background-image: url(/images/Trash.svg);
+  background-image: url(../../../images/Trash.svg);
   top: 18px;
   right: 15px;
   width: 18px;

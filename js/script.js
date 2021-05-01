@@ -84,13 +84,13 @@ function addNewCard(evt) {
   cardElement.querySelector(".element__delete").addEventListener("click", function () {
     cardElement.style.display = "none";
   });
-  cardElement.querySelector(".element__like").addEventListener("click",function(){
+  cardElement.querySelector(".element__like").addEventListener("click", function () {
     cardElement.querySelector(".element__like").classList.toggle("element__like_active");
-  })
+  });
   cardsContainer.prepend(cardElement);
   cardsContainer.append(openedPopup);
-  place.value= '';
-  imgLink.value= '';
+  place.value = "";
+  imgLink.value = "";
   toggleNewCard();
 }
 
@@ -134,7 +134,6 @@ function closePopup() {
   popup.classList.toggle("popup_opened");
 }
 function toggleNewCard() {
-
   newCard.classList.toggle("popup-add_opened");
 }
 

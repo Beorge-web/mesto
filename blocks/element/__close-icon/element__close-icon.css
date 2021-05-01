@@ -1,6 +1,6 @@
 .element__close-icon {
   transform: rotate(-45deg);
-  background-image: url(/images/plus.svg);
+  background-image: url(../../../images/plus.svg);
   background-size: contain;
   position: absolute;
   top: -40px;

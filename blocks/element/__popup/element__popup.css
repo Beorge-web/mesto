@@ -1,7 +1,6 @@
 .element__popup {
   height: 540px;
   position: relative;
-  background-size: cover;
-  width: fit-content;
   margin: 90px auto;
+  width: max-content;
 }

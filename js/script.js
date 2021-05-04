@@ -68,14 +68,16 @@ function createCard(element) {
   cardElement.querySelector(".element__like").addEventListener("click", function () {
     likeButton(cardElement.querySelector(".element__like"));
   });
-  addCard(cardsContainer,cardElement);
 
   return cardElement;
 }
-initialCards.forEach(createCard)
+ initialCards.forEach(element => {
+   addCard(cardsContainer,createCard(element))
+ })
 
 function addCard(container, cardElement) {
   container.prepend(cardElement);
+
 }
 function likeButton(item) {
   item.classList.toggle("element__like_active");
@@ -115,7 +117,7 @@ closeButton.addEventListener("click", function () {
 });
 addForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  createCard(getCard(addForm)); 
+  addCard(cardsContainer,createCard(getCard(addForm))); 
   addForm.reset();
   closePopup(newCard);
 });

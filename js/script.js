@@ -56,11 +56,12 @@ function createCard(element) {
   const elImg = cardElement.querySelector(".element__image");
   elTitle.textContent = element.name;
   elImg.style.backgroundImage = `url(${element.link})`;
-  cardPhoto.alt = elTitle.textContent;
+  
   elImg.addEventListener("click", function () {
     showPopup(openedPopup);
-    cardPhoto.src = elImg.style.backgroundImage.slice(5, -2);
+    cardPhoto.src = element.link;
     cardDesc.textContent = elTitle.textContent;
+    cardPhoto.alt = 'Полное изображение ' + elTitle.textContent;
   });
   cardElement.querySelector(".element__delete").addEventListener("click", function () {
     cardElement.remove();
@@ -95,8 +96,8 @@ function closePopup(item) {
   item.classList.remove("popup_opened");
 }
 function getCard(element) {
-  let name  = element.querySelector(".popup__text_type_place").value;
-  let link  = element.querySelector(".popup__text_type_link").value;
+  const name  = element.querySelector(".popup__text_type_place").value;
+  const link  = element.querySelector(".popup__text_type_link").value;
   return {name, link};
 }
 

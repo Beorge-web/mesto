@@ -61,7 +61,7 @@ function createCard(element) {
     showPopup(openedPopup);
     cardPhoto.src = element.link;
     cardDesc.textContent = elTitle.textContent;
-    cardPhoto.alt = 'Полное изображение ' + elTitle.textContent;
+    cardPhoto.alt = 'Полное изображение c карточки ' + elTitle.textContent;
   });
   cardElement.querySelector(".element__delete").addEventListener("click", function () {
     cardElement.remove();

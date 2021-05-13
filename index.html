@@ -30,11 +30,33 @@
         <div class="popup" id="edit-profile">
           <div class="popup__container">
             <button type="button" class="popup__close-icon"></button>
-            <form class="popup__form" name="edit-profile">
-              <h3 class="popup__title">Редактировать профиль</h3>
-              <input type="text" placeholder="Имя" name="name" class="popup__text popup__text_type_name" />
-              <input type="text" placeholder="Занятие" name="activity" class="popup__text popup__text_type_activity" />
-              <button type="submit" class="popup__submit-button">Сохранить</button>
+            <form class="popup__form" name="edit-profile" novalidate>
+              <fieldset class="popup__set">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <input
+                  id="name-input"
+                  type="text"
+                  placeholder="Имя"
+                  name="name"
+                  class="popup__text popup__text_type_name"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
+                <span class="popup__input-error name-input-error"></span>
+                <input
+                  id="activity-input"
+                  type="text"
+                  placeholder="Занятие"
+                  name="activity"
+                  class="popup__text popup__text_type_activity"
+                  minlength="2"
+                  maxlength="200"
+                  required
+                />
+                <span class="popup__input-error activity-input-error"></span>
+                <button type="submit" class="popup__submit-button">Сохранить</button>
+              </fieldset>
             </form>
           </div>
         </div>
@@ -42,15 +64,30 @@
           <div class="popup__container">
             <button type="button" class="popup__close-icon"></button>
             <form class="popup__form" name="add-element">
-              <h3 class="popup__title">Новое место</h3>
-              <input type="text" placeholder="Название" name="Place" class="popup__text popup__text_type_place" />
-              <input
-                type="url"
-                placeholder="Ссылка на картинку"
-                name="imgLink"
-                class="popup__text popup__text_type_link"
-              />
-              <button type="submit" class="popup__submit-button">Создать</button>
+              <fieldset class="popup__set">
+                <h3 class="popup__title">Новое место</h3>
+                <input
+                  id="text-input"
+                  type="text"
+                  placeholder="Название"
+                  name="Place"
+                  class="popup__text popup__text_type_place"
+                  minlength="2"
+                  maxlength="30"
+                  required
+                />
+                <span class="popup__input-error text-input-error"></span>
+                <input
+                  id="url-input"
+                  type="url"
+                  placeholder="Ссылка на картинку"
+                  name="imgLink"
+                  class="popup__text popup__text_type_link"
+                  required
+                />
+                <span class="popup__input-error url-input-error"></span>
+                <button type="submit" class="popup__submit-button">Создать</button>
+              </fieldset>
             </form>
           </div>
         </div>

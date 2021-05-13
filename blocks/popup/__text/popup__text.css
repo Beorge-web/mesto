@@ -1,7 +1,6 @@
 .popup__text {
   font-family: "Inter", Arial, sans-serif;
   border: none;
-  margin-bottom: 30px;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -14,9 +13,7 @@
   padding-bottom: 13px;
   border-bottom: 1px solid rgba(000, 0, 0, 0.2);
 }
-.popup__text:last-of-type {
-  margin-bottom: 46px;
-}
+
 .popup__text:focus {
   outline: none;
 }

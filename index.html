@@ -30,7 +30,7 @@
         <div class="popup" id="edit-profile">
           <div class="popup__container">
             <button type="button" class="popup__close-icon"></button>
-            <form class="popup__form" name="edit-profile" novalidate>
+            <form class="popup__form" name="edit-profile" required novalidate>
               <fieldset class="popup__set">
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <input
@@ -63,7 +63,7 @@
         <div class="popup" id="new-card">
           <div class="popup__container">
             <button type="button" class="popup__close-icon"></button>
-            <form class="popup__form" name="add-element">
+            <form class="popup__form" name="add-element" required novalidate>
               <fieldset class="popup__set">
                 <h3 class="popup__title">Новое место</h3>
                 <input
@@ -115,7 +115,7 @@
         </div>
       </div>
     </template>
-
+    <script src="js/validate.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

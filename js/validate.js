@@ -11,8 +11,8 @@ const showInputError = (formSelector, inputSelector, errorMessage, config) => {
     });
   };
   const toggleButtonState = (inputList, submitButton,config) => {
+    
     const {inactiveButtonClass} = config;
-    console.log(config)
     if (hasInvalidInput(inputList)) {
       submitButton.setAttribute("disabled", true);
       submitButton.classList.add(inactiveButtonClass);
@@ -37,7 +37,7 @@ const showInputError = (formSelector, inputSelector, errorMessage, config) => {
   };
   
   const setEventListeners = (formSelector,config) => { 
-    const { inputSelector,submitButtonSelector, ...restConfig} = config;
+    const {inputSelector,submitButtonSelector, ...restConfig} = config;
     const inputList = Array.from(formSelector.querySelectorAll(inputSelector));
     const submitButton = formSelector.querySelector(submitButtonSelector);
     inputList.forEach((inputSelector) => {
@@ -49,12 +49,12 @@ const showInputError = (formSelector, inputSelector, errorMessage, config) => {
   };
   
   const enableValidation = (config) => {
+    
     const {formSelector,fieldSelector, ...restConfig} = config;
     const formList = Array.from(document.querySelectorAll(formSelector));
     formList.forEach((formSelector) => {
       formSelector.addEventListener("submit", function (evt) {
-        evt.preventDefault();
-        setEventListeners(formList);
+        evt.preventDefault();        
       });
       const fieldsetList = Array.from(formSelector.querySelectorAll(fieldSelector));
       fieldsetList.forEach((fieldSet) => {

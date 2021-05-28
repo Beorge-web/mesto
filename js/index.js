@@ -18,7 +18,16 @@ const activityInput = document.querySelector(".popup__text_type_activity");
 const cardPopup = document.querySelector("#element__photo-popup");
 const cardPhoto = cardPopup.querySelector(".popup__photo");
 const cardDesc = cardPopup.querySelector(".popup__description");
-
+const cardCloseButton = cardPopup.querySelector(".popup__close-icon")
+const config = {
+  form: ".popup__form",
+  inputSelector: ".popup__text",
+  fieldSelector: ".popup__set",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_inactive",
+  inputErrorClass: "popup__input-error",
+  errorClass: "popup__input-error_active",
+};
 const initialCards = [
   {
     name: "Архыз",
@@ -65,7 +74,16 @@ function getCard(element) {
   const link = element.querySelector(".popup__text_type_link").value;
   return { name, link };
 }
-
+function handleOpenPopup(name, link) {
+  cardPhoto.src = link;
+  cardDesc.textContent = name;
+  showPopup(cardPopup)
+}  
+function handleClosePopup() {
+  cardPhoto.src = "";
+  cardDesc.textContent = "";
+  closePopup(cardPopup);
+}
 function closeOverPopup(evt) {
   if (evt.target === evt.currentTarget) {
     closePopup(evt.currentTarget);
@@ -78,15 +96,13 @@ function closeByEscape(evt) {
   }
 }
 
-editPopup.addEventListener("mouseup", closeOverPopup);
-newCard.addEventListener("mouseup", closeOverPopup);
 newCardClose.addEventListener("click", function () {
   closePopup(newCard);
 });
 addButton.addEventListener("click", function () {
   showPopup(newCard);
   createButton.setAttribute("disabled", true);
-  createButton.classList.add("popup__submit-button_inactive");
+  createButton.classList.add(config.inactiveButtonClass);
 });
 editButton.addEventListener("click", function () {
   showPopup(editPopup);
@@ -113,17 +129,14 @@ initialCards.forEach((item) => {
   const cardElement = card.generateCard();
   cardsContainer.append(cardElement);
 });
-const config = {
-  form: ".popup__form",
-  inputSelector: ".popup__text",
-  fieldSelector: ".popup__set",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__submit-button_inactive",
-  inputErrorClass: "popup__input-error",
-  errorClass: "popup__input-error_active",
-};
+cardCloseButton.addEventListener("click", handleClosePopup)
+
+
 const profileForm = new FormValidator(config, editForm);
 const cardForm = new FormValidator(config, addForm);
 profileForm.enableValidation();
 cardForm.enableValidation();
-export { config, editForm, addForm, closeButton, cardPopup, cardPhoto, cardDesc };
+editPopup.addEventListener("mouseup", closeOverPopup);
+newCard.addEventListener("mouseup", closeOverPopup);
+cardPopup.addEventListener("mouseup", closeOverPopup);
+export { config, editForm, addForm, closeButton, cardPopup, cardPhoto, cardDesc, handleOpenPopup, showPopup, closePopup};

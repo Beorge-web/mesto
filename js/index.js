@@ -1,4 +1,6 @@
-const tempCard = document.querySelector("#element").content;
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
 const cardsContainer = document.querySelector(".elements");
 const addButton = document.querySelector(".profile__add-button");
 const newCard = document.querySelector("#new-card");
@@ -9,16 +11,14 @@ const editForm = editPopup.querySelector(".popup__form");
 const addForm = newCard.querySelector(".popup__form");
 const profileName = document.querySelector(".profile__title");
 const profileActivity = document.querySelector(".profile__subtitle");
-const saveButton = document.querySelector(".popup__submit-button");
 const editButton = document.querySelector(".profile__button");
 const closeButton = editPopup.querySelector(".popup__close-icon");
-const inputActivity = editPopup.querySelector(".popup__text_type_activity");
 const nameInput = document.querySelector(".popup__text_type_name");
 const activityInput = document.querySelector(".popup__text_type_activity");
 const cardPopup = document.querySelector("#element__photo-popup");
 const cardPhoto = cardPopup.querySelector(".popup__photo");
 const cardDesc = cardPopup.querySelector(".popup__description");
-const popups = document.querySelectorAll(".popup");
+
 const initialCards = [
   {
     name: "Архыз",
@@ -45,104 +45,7 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._link = data.link;
-    this._cardSelector = cardSelector;
-  }
-  _closeByEscape(evt) {
-    if (evt.key === "Escape") {
-      this._handleClosePopup();
-    }
-  }
-  _closeOverPopup(evt) {
-    if (evt.target === evt.currentTarget) {
-      closePopup(evt.currentTarget);
-    }
-  }
-  _getTemplate() {
-    const cardElement = document.querySelector(this._cardSelector).content.querySelector(".element").cloneNode(true);
-    return cardElement;
-  }
-  generateCard() {
-    this._element = this._getTemplate();
-    this._element.querySelector(".element__image").style.backgroundImage = `url(${this._link})`;
-    this._element.querySelector(".element__title").textContent = this._name;
-    this._setEventListeners();
-    return this._element;
-  }
 
-  _handleOpenPopup() {
-    cardPhoto.src = this._link;
-    cardDesc.textContent = this._name;
-    cardPopup.classList.add("popup_opened");
-    document.addEventListener("keydown", (ev) => {
-      this._closeByEscape(ev);
-    });
-  }
-  _handleClosePopup() {
-    cardPhoto.src = "";
-    cardDesc.textContent = "";
-    cardPopup.classList.remove("popup_opened");
-    document.removeEventListener("keydown", (ev) => {
-      this._closeByEscape(ev);
-    });
-  }
-
-  _setEventListeners() {
-    this._cardImg = this._element.querySelector(".element__image");
-    this._elDelete = this._element.querySelector(".element__delete");
-    this._like = this._element.querySelector(".element__like");
-    console.log(this._element)
-    this._cardImg.addEventListener("click", () => {
-      this._handleOpenPopup();
-    });
-    closeButton.addEventListener("click", () => {
-      this._handleClosePopup();
-    });
-    this._like.addEventListener("click", () => {
-      this._like.classList.toggle("element__like_active");
-    });
-    this._elDelete.addEventListener("click", () => {
-      this._element.remove();
-    });
-    cardPopup.addEventListener("mouseup",(ev) => {
-      this._closeOverPopup(ev);
-    });
-  }
-}
-// function createCard(element) {
-//   const cardElement = tempCard.querySelector(".element").cloneNode(true);
-//   const elTitle = cardElement.querySelector(".element__title");
-//   const elImg = cardElement.querySelector(".element__image");
-//   elTitle.textContent = element.name;
-//   elImg.style.backgroundImage = `url(${element.link})`;
-
-//   elImg.addEventListener("click", function () {
-//     showPopup(cardPopup);
-//     cardPhoto.src = element.link;
-//     cardDesc.textContent = elTitle.textContent;
-//     cardPhoto.alt = "Полное изображение c карточки " + elTitle.textContent;
-//   });
-//   cardElement.querySelector(".element__delete").addEventListener("click", function () {
-//     cardElement.remove();
-//   });
-//   cardElement.querySelector(".element__like").addEventListener("click", function (evt) {
-//     likeButton(evt);
-//   });
-//   return cardElement;
-// }
-// initialCards.forEach((element) => {
-//   addCard(cardsContainer, createCard(element));
-// });
-
-// function addCard(container, cardElement) {
-//   container.prepend(cardElement);
-// }
-// function likeButton(evt) {
-//   evt.target.classList.toggle("element__like_active");
-// }
 function changeProfile(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
@@ -176,7 +79,6 @@ function closeByEscape(evt) {
 }
 
 editPopup.addEventListener("mouseup", closeOverPopup);
-
 newCard.addEventListener("mouseup", closeOverPopup);
 newCardClose.addEventListener("click", function () {
   closePopup(newCard);
@@ -197,7 +99,7 @@ closeButton.addEventListener("click", function () {
 });
 addForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  const card = new Card(getCard(addForm),"#element")
+  const card = new Card(getCard(addForm), "#element");
   const cardElement = card.generateCard();
   cardsContainer.prepend(cardElement);
   addForm.reset();
@@ -206,9 +108,22 @@ addForm.addEventListener("submit", function (evt) {
 cardPopup.querySelector(".popup__close-icon").addEventListener("click", function () {
   closePopup(cardPopup);
 });
-
 initialCards.forEach((item) => {
   const card = new Card(item, "#element");
   const cardElement = card.generateCard();
   cardsContainer.append(cardElement);
 });
+const config = {
+  form: ".popup__form",
+  inputSelector: ".popup__text",
+  fieldSelector: ".popup__set",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_inactive",
+  inputErrorClass: "popup__input-error",
+  errorClass: "popup__input-error_active",
+};
+const profileForm = new FormValidator(config, editForm);
+const cardForm = new FormValidator(config, addForm);
+profileForm.enableValidation();
+cardForm.enableValidation();
+export { config, editForm, addForm, closeButton, cardPopup, cardPhoto, cardDesc };

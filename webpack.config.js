@@ -34,7 +34,7 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
+             importLoaders: 1
             }
           },
           'postcss-loader'
@@ -44,7 +44,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      inject: 'body',
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),

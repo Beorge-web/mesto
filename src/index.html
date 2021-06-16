@@ -10,13 +10,13 @@
   <body class="root">
     <div class="page">
       <header class="header root__section">
-        <img src="images/logo.svg" alt="Место логотип" class="header__logo" />
+        <img src="<%=require('./images/logo.svg')%>" alt="Место логотип" class="header__logo" />
       </header>
 
       <main class="content">
         <section class="profile root__section">
           <div class="profile__column-data">
-            <img src="images/Avatar.png" alt="Аватар" class="profile__avatar" />
+            <img src="<%=require('./images/Avatar.png')%>" alt="Аватар" class="profile__avatar" />
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
               <button type="button" class="profile__button"></button>
@@ -24,7 +24,7 @@
             </div>
           </div>
           <button type="button" class="profile__add-button">
-            <img src="images/plus.svg" alt="плюс" class="profile__vector" />
+            <img src="<%=require('./images/plus.svg')%>" alt="плюс" class="profile__vector" />
           </button>
         </section>
         <div class="popup" id="edit-popup">
@@ -115,6 +115,6 @@
         </div>
       </div>
     </template>
-    <script type="module" src="src/index.js"></script>
+    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>

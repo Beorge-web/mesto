@@ -25,6 +25,6 @@ export default class Popup {
   };
   setEventListeners() {
     this._popup.addEventListener("mouseup", this._closeOverPopup)
-    this._closeButton.addEventListener("click", this.close);
+    this._closeButton.addEventListener("click", this.close.bind(this)); 
   }
 }

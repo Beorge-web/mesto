@@ -1,4 +1,4 @@
-import './index.css';
+import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -9,41 +9,23 @@ import {
   activityInput,
   addButton,
   addForm,
-  cardDesc,
-  cardPhoto,
-  cardPopup,
   cardsContainer,
   config,
-  createButton,
   editButton,
   editForm,
-  editPopup,
   initialCards,
   nameInput,
-  newCard,
   profileActivity,
   profileName,
+  textError,
+  urlError,
 } from "../utils/constants.js";
-function showPopup(item) {
-  item.classList.add("popup_opened");
-}
-function closePopup(item) {
-  item.classList.remove("popup_opened");
-}
-
-
-function closeOverPopup(evt) {
-  
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.currentTarget);
-  }
-}
-
 
 addButton.addEventListener("click", function () {
   addCard.open();
-  createButton.setAttribute("disabled", true);
-  createButton.classList.add(config.inactiveButtonClass);
+  cardForm.toggleButtonState();
+  textError.classList.remove("popup__input-error_active");
+  urlError.classList.remove("popup__input-error_active");
 });
 editButton.addEventListener("click", function () {
   editProfile.open();
@@ -64,16 +46,20 @@ const cardList = new Section(
 );
 cardList.renderItems();
 const imgPopupSelector = "#element__photo-popup";
+const popupImage = new PopupWithImage(imgPopupSelector);
+popupImage.setEventListeners();
 function handleOpenPopup(name, link) {
-  const popupImage = new PopupWithImage(imgPopupSelector);
   popupImage.open(name, link);
-  popupImage.setEventListeners();
 }
 const editProfileSelector = "#edit-popup";
+const profileSelectors = {
+  name: ".popup__text_type_name",
+  activity: ".popup__text_type_activity",
+};
 const editProfile = new PopupWithForm(
   {
     handleFormSubmit: (item) => {
-      const profileEdit = new UserInfo(item.name, item.activity);
+      const profileEdit = new UserInfo(profileSelectors);
       const info = profileEdit.getUserInfo();
       profileEdit.setUserInfo(info);
     },
@@ -98,7 +84,5 @@ const profileForm = new FormValidator(config, editForm);
 const cardForm = new FormValidator(config, addForm);
 profileForm.enableValidation();
 cardForm.enableValidation();
-editPopup.addEventListener("mouseup", closeOverPopup);
-newCard.addEventListener("mouseup", closeOverPopup);
-cardPopup.addEventListener("mouseup", closeOverPopup);
+
 export { handleOpenPopup };

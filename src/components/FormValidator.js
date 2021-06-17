@@ -4,7 +4,7 @@ class FormValidator {
     this._form = config.form;
     this._config = config;
     this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector)); 
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
   }
   _checkInputValidity = (input) => {
     if (!input.validity.valid) {
@@ -38,7 +38,6 @@ class FormValidator {
     });
   };
   _setEventListeners() {
-
     this._inputList.forEach((input) => {
       input.addEventListener("input", () => {
         this.toggleButtonState(this._inputList, this._buttonElement);

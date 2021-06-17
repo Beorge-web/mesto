@@ -15,6 +15,8 @@ export const cardPopup = document.querySelector("#element__photo-popup");
 export const cardPhoto = cardPopup.querySelector(".popup__photo");
 export const cardDesc = cardPopup.querySelector(".popup__description");
 export const cardCloseButton = cardPopup.querySelector(".popup__close-icon");
+export const textError = document.querySelector('.text-input-error');
+export const urlError = document.querySelector('.url-input-error');
 export const config = {
     form: ".popup__form",
     inputSelector: ".popup__text",

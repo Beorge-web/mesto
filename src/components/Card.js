@@ -1,6 +1,5 @@
-
 export default class Card {
-  constructor(data, cardSelector, handleOpenPopup) { // если в конструктор передавать handleopenpopup - то _handle... is not a function
+  constructor(data, cardSelector, handleOpenPopup) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -22,7 +21,7 @@ export default class Card {
     this._elDelete = this._element.querySelector(".element__delete");
     this._like = this._element.querySelector(".element__like");
     this._cardImg.addEventListener("click", () => {
-    this._handleOpenPopup(this._name, this._link);
+      this._handleOpenPopup(this._name, this._link);
     });
     this._like.addEventListener("click", () => {
       this._like.classList.toggle("element__like_active");

@@ -17,20 +17,18 @@ import {
   nameInput,
   profileActivity,
   profileName,
-  textError,
-  urlError,
 } from "../utils/constants.js";
 
 addButton.addEventListener("click", function () {
   addCard.open();
   cardForm.toggleButtonState();
-  textError.classList.remove("popup__input-error_active");
-  urlError.classList.remove("popup__input-error_active");
+  cardForm.hideInputErrors();
 });
 editButton.addEventListener("click", function () {
   editProfile.open();
   nameInput.value = profileName.textContent;
   activityInput.value = profileActivity.textContent;
+  profileForm.hideInputErrors();
 });
 
 const cardList = new Section(
@@ -55,6 +53,8 @@ const editProfileSelector = "#edit-popup";
 const profileSelectors = {
   name: ".popup__text_type_name",
   activity: ".popup__text_type_activity",
+  profileName:".profile__title",
+  profileActivity:".profile__subtitle",
 };
 const editProfile = new PopupWithForm(
   {

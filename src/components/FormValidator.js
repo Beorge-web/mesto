@@ -22,7 +22,11 @@ class FormValidator {
     const errorElement = this._formElement.querySelector(`.${input.id}-error`);
     errorElement.classList.remove(input.errorClass);
     errorElement.textContent = "";
+    
   };
+  hideInputErrors(){
+    this._inputList.forEach(input => this._hideInputError(input));
+  }
   toggleButtonState() {
     if (this._hasInvalidInput(this._inputList)) {
       this._buttonElement.setAttribute("disabled", true);

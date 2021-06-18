@@ -2,8 +2,8 @@ export default class UserInfo {
   constructor(profileSelectors) {
     this._name = document.querySelector(profileSelectors.name);
     this._activity = document.querySelector(profileSelectors.activity);
-    this._profileName = document.querySelector(".profile__title");
-    this._profileActivity = document.querySelector(".profile__subtitle");
+    this._profileName = document.querySelector(profileSelectors.profileName); //не понял почему не используются, но они нужны в setUserInfo
+    this._profileActivity = document.querySelector(profileSelectors.profileActivity);
   }
   getUserInfo() {
     const userInfo = {};

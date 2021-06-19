@@ -19,18 +19,6 @@ import {
   profileName,
 } from "../utils/constants.js";
 
-addButton.addEventListener("click", function () {
-  addCard.open();
-  cardForm.toggleButtonState();
-  cardForm.hideInputErrors();
-});
-editButton.addEventListener("click", function () {
-  editProfile.open();
-  nameInput.value = profileName.textContent;
-  activityInput.value = profileActivity.textContent;
-  profileForm.hideInputErrors();
-});
-
 const cardList = new Section(
   {
     data: initialCards,
@@ -43,6 +31,7 @@ const cardList = new Section(
   ".elements"
 );
 cardList.renderItems();
+
 const imgPopupSelector = "#element__photo-popup";
 const popupImage = new PopupWithImage(imgPopupSelector);
 popupImage.setEventListeners();
@@ -51,22 +40,30 @@ function handleOpenPopup(name, link) {
 }
 const editProfileSelector = "#edit-popup";
 const profileSelectors = {
-  name: ".popup__text_type_name",
-  activity: ".popup__text_type_activity",
-  profileName:".profile__title",
-  profileActivity:".profile__subtitle",
+  profileName: ".profile__title",
+  profileActivity: ".profile__subtitle",
 };
+
+const profileEdit = new UserInfo(profileSelectors);
 const editProfile = new PopupWithForm(
   {
     handleFormSubmit: (item) => {
-      const profileEdit = new UserInfo(profileSelectors);
-      const info = profileEdit.getUserInfo();
-      profileEdit.setUserInfo(info);
+      profileEdit.setUserInfo(item);
     },
   },
   editProfileSelector
 );
 editProfile.setEventListeners();
+
+editButton.addEventListener("click", function () {
+  editProfile.open();
+  const userData = profileEdit.getUserInfo();
+  nameInput.value = userData.name;
+  activityInput.value = userData.activity;
+  profileForm.hideInputErrors();
+});
+
+
 const addCardSelector = "#new-card";
 const addCard = new PopupWithForm(
   {
@@ -79,6 +76,11 @@ const addCard = new PopupWithForm(
   addCardSelector
 );
 addCard.setEventListeners();
+addButton.addEventListener("click", function () {
+  addCard.open();
+  cardForm.toggleButtonState();
+  cardForm.hideInputErrors();
+});
 
 const profileForm = new FormValidator(config, editForm);
 const cardForm = new FormValidator(config, addForm);

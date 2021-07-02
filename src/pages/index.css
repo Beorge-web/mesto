@@ -38,10 +38,14 @@
 
 @import url(../blocks/element/__delete/element__delete.css);
 @import url(../blocks/element/__title/element__title.css);
+@import url(../blocks/element/__delete/_owner/element__delete_owner.css);
 @import url(../blocks/element/__like/element__like.css);
 @import url(../blocks/element/__like/_active/element__like_active.css);
+@import url(../blocks/element/__like-counter/element__like-counter.css);
+@import url(../blocks/element/__like-container/element__like-container.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__bottom/element__bottom.css);
+
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__logo/footer__logo.css);
 @import url(../blocks/popup/_opened/popup_opened.css);

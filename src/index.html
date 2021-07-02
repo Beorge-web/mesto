@@ -47,7 +47,7 @@
                   id="activity-input"
                   type="text"
                   placeholder="Занятие"
-                  name="activity"
+                  name="about"
                   class="popup__text popup__text_type_activity"
                   minlength="2"
                   maxlength="200"
@@ -98,6 +98,16 @@
               <button type="button" class="popup__close-icon"></button>
             </div>
           </div>
+
+          <div class="popup" id="element__delete-confirm">
+            <div class="popup__background">
+              <div class="popup__container">
+                <button type="button" class="popup__close-icon"></button>
+                <h3 class="popup__title">Вы уверены?</h3>
+                <button type="button" class="popup__submit-button" id="delete-confirm">Да</button>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
       <footer class="footer root__section">
@@ -110,7 +120,11 @@
         <button type="button" class="element__image"></button>
         <div class="element__bottom">
           <h3 class="element__title"></h3>
-          <button type="button" class="element__like"></button>
+
+          <div class="element__like-container">
+            <button type="button" class="element__like"></button>
+            <div class="element__like-counter">0</div>
+          </div>
         </div>
       </div>
     </template>

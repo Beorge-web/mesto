@@ -18,7 +18,7 @@ export const cardCloseButton = cardPopup.querySelector(".popup__close-icon");
 export const avatarPopup = document.querySelector("#avatar-popup");
 export const avatarForm = avatarPopup.querySelector(".popup__form");
 export const avatar = document.querySelector(".profile__avatar");
-export const avatarChange = document.querySelector(".profile__avatar_pen");
+export const avatarChange = document.querySelector(".profile__avatar-pen");
 
 export const config = {
   form: ".popup__form",

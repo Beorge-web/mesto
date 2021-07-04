@@ -18,6 +18,7 @@
 @import url(../blocks/profile/__vector/profile__vector.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__column-data/profile__column-data.css);
+@import url(../blocks/profile/__avatar/_pen/profile__avatar_pen.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__title/popup__title.css);

@@ -1,0 +1,26 @@
+.profile__avatar_pen {
+  position: absolute;
+  width: 122px;
+  height: 122px;
+  opacity: 0;
+  z-index: 2;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../../../../images/ProfilePen.svg);
+  border-radius: 50%;
+}
+.profile__avatar_pen:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+  background-size: 26px 26px;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+@media screen and (max-width: 1000px) {
+  .profile__avatar_pen {
+    top: 0;
+    left: 81px;
+  }
+}

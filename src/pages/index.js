@@ -11,6 +11,10 @@ import {
   activityInput,
   addButton,
   addForm,
+  avatar,
+  avatarChange,
+  avatarForm,
+  avatarPopup,
   cardsContainer,
   config,
   editButton,
@@ -33,6 +37,35 @@ import {
 //   ".elements"
 // );
 // cardList.renderItems();
+const apiData = {
+  url: "https://nomoreparties.co/v1/cohort-25",
+  headers: {
+    authorization: "7cfb4270-9131-40e7-9051-7aff8402e693",
+    "Content-Type": "application/json",
+  },
+};
+const api = new Api(apiData);
+
+api.getData("/users/me")
+  .then((result) => {
+  profileEdit.setUserInfo(result);
+  profileEdit.setUserAvatar(result);
+});
+
+api.getData("/cards").then((result) => {
+  const newCardList = new Section(
+    {
+      data: result,
+      renderer: (item) => {
+        const card = new Card(item, "#element", handleOpenPopup, handleDeletePopup, handleLike);
+        const cardElementt = card.generateCard();
+        newCardList.setItem(cardElementt);
+      },
+    },
+    ".elements"
+  );
+  newCardList.renderItems();
+});
 
 const imgPopupSelector = "#element__photo-popup";
 const popupImage = new PopupWithImage(imgPopupSelector);
@@ -47,20 +80,13 @@ const profileSelectors = {
   profileActivity: ".profile__subtitle",
   profileAvatar: ".profile__avatar",
 };
-const saveData = {
-  url: "https://nomoreparties.co/v1/cohort-25/users/me",
-  headers: {
-    authorization: "7cfb4270-9131-40e7-9051-7aff8402e693",
-    "Content-Type": "application/json",
-  },
-};
-const saveProifle = new Api(saveData, "PATCH");
+
 const profileEdit = new UserInfo(profileSelectors);
 const editProfile = new PopupWithForm(
   {
-    handleFormSubmit: (item) => {
+    handleFormSubmit: (item, button) => {
       profileEdit.setUserInfo(item);
-      saveProifle.patchProfile(item);
+      api.patchProfile(item, button);
     },
   },
   editProfileSelector
@@ -78,55 +104,45 @@ const deleteConfSelector = "#element__delete-confirm";
 const confDeleteButton = document.querySelector("#delete-confirm");
 const confirmPopup = new Popup(deleteConfSelector);
 confirmPopup.setEventListeners();
-
-const deleteData = {
-  url: "https://mesto.nomoreparties.co/v1/cohort-25/cards/",
-  headers: {
-    authorization: "7cfb4270-9131-40e7-9051-7aff8402e693",
-  },
-};
-const deleteCard = new Api(deleteData, "DELETE");
-
 function handleDeletePopup(id, item) {
   confirmPopup.open();
-
   confDeleteButton.addEventListener("click", function () {
     item.remove();
-    deleteCard.handleCard(id);
+    api.deleteCard(id);
     confirmPopup.close();
   });
 }
 
-const likeData = {
-  url: "https://mesto.nomoreparties.co/v1/cohort-25/cards/likes/",
-  headers: {
-    authorization: "7cfb4270-9131-40e7-9051-7aff8402e693",
-  },
-};
-const addLike = new Api(likeData, "PUT");
-const removeLike = new Api(likeData, "DELETE");
 function handleLike(id, action) {
   if (action == true) {
-    addLike.handleCard(id);
+    api.handleCard(id, true); //add like
   } else {
-    removeLike.handleCard(id);
+    api.handleCard(id, false); // remove like
   }
 }
-const addCardSelector = "#new-card";
-const cardData = {
-  url: "https://mesto.nomoreparties.co/v1/cohort-25/cards",
-  headers: {
-    authorization: "7cfb4270-9131-40e7-9051-7aff8402e693",
-    "Content-Type": "application/json",
+
+const avatarPopupSelector = "#avatar-popup";
+const newAvatar = new PopupWithForm(
+  {
+    handleFormSubmit: (item, button) => {
+      avatar.src = item.avatar;
+      api.updateAvatar(item, button);
+    },
   },
-};
-const newCard = new Api(cardData, "POST");
+  avatarPopupSelector
+);
+newAvatar.setEventListeners();
+avatarChange.addEventListener("click", function () {
+  newAvatar.open();
+});
+
+const addCardSelector = "#new-card";
 const addCard = new PopupWithForm(
   {
-    handleFormSubmit: (item) => {
+    handleFormSubmit: (item, button) => {
       item.likes = [];
       const card = new Card(item, "#element", handleOpenPopup, handleDeletePopup, handleLike);
-      newCard.addNewCard(item);
+      api.addNewCard(item, button);
       const cardElement = card.generateCard();
       cardsContainer.prepend(cardElement);
     },
@@ -142,57 +158,11 @@ addButton.addEventListener("click", function () {
 
 const profileForm = new FormValidator(config, editForm);
 const cardForm = new FormValidator(config, addForm);
+const avatarValid = new FormValidator(config, avatarForm);
+avatarValid.enableValidation();
 profileForm.enableValidation();
 cardForm.enableValidation();
 
-const profileData = {
-  url: "https://nomoreparties.co/v1/cohort-25/users/me",
-  headers: {
-    authorization: "7cfb4270-9131-40e7-9051-7aff8402e693",
-  },
-};
-const profileInfo = new Api(profileData, "GET");
-profileInfo.getData().then((result) => {
-  //console.log(result)
-  profileEdit.setUserInfo(result);
-  profileEdit.setUserAvatar(result);
-});
 
-const cardsData = {
-  url: "https://nomoreparties.co/v1/cohort-25/cards",
-  headers: {
-    authorization: "7cfb4270-9131-40e7-9051-7aff8402e693",
-  },
-};
-const newCards = new Api(cardsData, "GET");
-newCards.getData().then((result) => {
-  //console.log(result);
-  const newCardList = new Section(
-    {
-      data: result,
-      renderer: (item) => {
-        const card = new Card(item, "#element", handleOpenPopup, handleDeletePopup, handleLike);
-        const cardElementt = card.generateCard();
-        newCardList.setItem(cardElementt);
-      },
-    },
-    ".elements"
-  );
-  newCardList.renderItems();
-});
-
-// function addNewCard(data) {
-//   fetch("https://mesto.nomoreparties.co/v1/cohort-25/cards", {
-//     method: "POST",
-//     headers: {
-//       authorization: "7cfb4270-9131-40e7-9051-7aff8402e693",
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       name: data.name,
-//       link: data.link,
-//     }),
-//   });
-// }
 
 export { handleOpenPopup, handleDeletePopup, handleLike };

@@ -5,7 +5,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import Popup from "../components/Popup";
+import PopupWithSubmit from "../components/PopupWithSubmit.js";
 import Api from "../components/Api";
 import {
   activityInput,
@@ -24,19 +24,6 @@ import {
   profileActivity,
   profileName,
 } from "../utils/constants.js";
-
-// const cardList = new Section(
-//   {
-//     data: initialCards,
-//     renderer: (item) => {
-//       const card = new Card(item, "#element", handleOpenPopup);
-//       const cardElement = card.generateCard();
-//       cardList.setItem(cardElement);
-//     },
-//   },
-//   ".elements"
-// );
-// cardList.renderItems();
 const apiData = {
   url: "https://nomoreparties.co/v1/cohort-25",
   headers: {
@@ -46,11 +33,33 @@ const apiData = {
 };
 const api = new Api(apiData);
 
-api.getData("/users/me")
-  .then((result) => {
-  profileEdit.setUserInfo(result);
-  profileEdit.setUserAvatar(result);
-});
+Promise.all([
+  // в Promise.all передаем массив промисов которые нужно выполнить
+  api.getData("/users/me"),
+  api.getData("/cards"),
+])
+  .then(([userData, initialCards]) => {
+    profileEdit.setUserInfo(userData);
+    profileEdit.setUserAvatar(userData);
+    const ownerId = userData._id;
+    console.log(userData);
+    const newCardList = new Section(
+      {
+        data: initialCards,
+        renderer: (item) => {
+          const card = new Card(item, "#element", handleOpenPopup, handleDeletePopup, handleLike);
+          card.getOwnerId(ownerId);
+          const cardElementt = card.generateCard();
+          newCardList.setItem(cardElementt);
+        },
+      },
+      ".elements"
+    );
+    newCardList.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 api.getData("/cards").then((result) => {
   const newCardList = new Section(
@@ -101,15 +110,15 @@ editButton.addEventListener("click", function () {
   profileForm.hideInputErrors();
 });
 const deleteConfSelector = "#element__delete-confirm";
-const confDeleteButton = document.querySelector("#delete-confirm");
-const confirmPopup = new Popup(deleteConfSelector);
+const confirmPopup = new PopupWithSubmit(deleteConfSelector);
 confirmPopup.setEventListeners();
 function handleDeletePopup(id, item) {
-  confirmPopup.open();
-  confDeleteButton.addEventListener("click", function () {
-    item.remove();
-    api.deleteCard(id);
-    confirmPopup.close();
+  confirmPopup.open(() => {
+    console.log(confirmPopup);
+    api.deleteCard(id).then(() => {
+      item.remove();
+      confirmPopup.close();
+    });
   });
 }
 
@@ -126,7 +135,9 @@ const newAvatar = new PopupWithForm(
   {
     handleFormSubmit: (item, button) => {
       avatar.src = item.avatar;
-      api.updateAvatar(item, button);
+      api.updateAvatar(item, button).then(() => {
+        newAvatar.close();
+      });
     },
   },
   avatarPopupSelector
@@ -142,7 +153,9 @@ const addCard = new PopupWithForm(
     handleFormSubmit: (item, button) => {
       item.likes = [];
       const card = new Card(item, "#element", handleOpenPopup, handleDeletePopup, handleLike);
-      api.addNewCard(item, button);
+      api.addNewCard(item, button).then(() => {
+        addCard.close();
+      });
       const cardElement = card.generateCard();
       cardsContainer.prepend(cardElement);
     },
@@ -162,7 +175,5 @@ const avatarValid = new FormValidator(config, avatarForm);
 avatarValid.enableValidation();
 profileForm.enableValidation();
 cardForm.enableValidation();
-
-
 
 export { handleOpenPopup, handleDeletePopup, handleLike };

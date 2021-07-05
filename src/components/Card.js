@@ -8,11 +8,14 @@ export default class Card {
     this._handleLike = handleLike;
     this._handleDeletePopup = handleDeletePopup;
     this._data = data;
-    this._ownerId = "e0c25d46b8a84494157818e6";
+    this._ownerId = '123';
   }
   _getTemplate() {
     const cardElement = document.querySelector(this._cardSelector).content.querySelector(".element").cloneNode(true);
     return cardElement;
+  }
+  getOwnerId(id){
+    this._ownerId = id;
   }
   generateCard() {
     // if (!this._data.owner) {

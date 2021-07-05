@@ -8,7 +8,6 @@ export default class Card {
     this._handleLike = handleLike;
     this._handleDeletePopup = handleDeletePopup;
     this._data = data;
-    this._ownerId = '123';
   }
   _getTemplate() {
     const cardElement = document.querySelector(this._cardSelector).content.querySelector(".element").cloneNode(true);

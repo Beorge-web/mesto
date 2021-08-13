@@ -34,7 +34,6 @@ const apiData = {
 const api = new Api(apiData);
 
 Promise.all([
-  // в Promise.all передаем массив промисов которые нужно выполнить
   api.getData("/users/me"),
   api.getData("/cards"),
 ])
@@ -61,20 +60,6 @@ Promise.all([
     console.log(err);
   });
 
-api.getData("/cards").then((result) => {
-  const newCardList = new Section(
-    {
-      data: result,
-      renderer: (item) => {
-        const card = new Card(item, "#element", handleOpenPopup, handleDeletePopup, handleLike);
-        const cardElementt = card.generateCard();
-        newCardList.setItem(cardElementt);
-      },
-    },
-    ".elements"
-  );
-  newCardList.renderItems();
-});
 
 const imgPopupSelector = "#element__photo-popup";
 const popupImage = new PopupWithImage(imgPopupSelector);

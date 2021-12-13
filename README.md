@@ -16,7 +16,7 @@
 ## Установка и запуск
 
 1. Сколнируйте репозиторий:
-`git clone https://github.com/Beorge-web/mesto.git`
+`git clone https://github.com/Beorge-web/react-mesto-auth.git`
 2. Установите NPM пакеты:
 `npm install`
 3. Запуск проекта:
